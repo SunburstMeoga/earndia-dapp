@@ -39,7 +39,7 @@ class NewsPage extends StatelessWidget {
           children: [
             // 顶部栏
             Container(
-              height: statusBarHeight + appBarHeight,
+              height: statusBarHeight + appBarHeight, // 适配状态栏和AppBar
               color: const Color(0xFF373A81),
               padding: EdgeInsets.only(
                 top: statusBarHeight,
@@ -65,8 +65,8 @@ class NewsPage extends StatelessWidget {
                     child: Center(
                       child: Image.asset(
                         'assets/images/logo.png',
-                        width: 120,
-                        height: 40,
+                        width: 100,
+                        height: 30,
                         fit: BoxFit.contain,
                       ),
                     ),
@@ -96,7 +96,16 @@ class NewsPage extends StatelessWidget {
             ),
             // 主体内容
             Expanded(
-              child: Center(
+              child: Container(
+                margin: const EdgeInsets.symmetric(
+                    horizontal: 8, vertical: 0), // 调整间距
+                // decoration: BoxDecoration(
+                //   border: Border.all(
+                //     color: Colors.red, // 设置边框颜色
+                //     width: 1, // 边框宽度
+                //   ),
+                //   borderRadius: BorderRadius.circular(8), // 圆角
+                // ),
                 child: CustomTabBar(
                   tabTitles: const ['热门新闻', '商业', '技术', '科学'],
                   tabViews: const [
