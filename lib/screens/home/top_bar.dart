@@ -106,10 +106,10 @@ class NewsPage extends StatelessWidget {
                 //   ),
                 //   borderRadius: BorderRadius.circular(8), // 圆角
                 // ),
-                child: CustomTabBar(
-                  tabTitles: const ['热门新闻', '商业', '技术', '科学'],
-                  tabViews: const [
-                    Center(child: Text('热门新闻内容')),
+                child: const CustomTabBar(
+                  tabTitles: ['热门', '商业', '技术', '科学'],
+                  tabViews: [
+                    Center(child: Text('热门内容')),
                     Center(child: Text('商业内容')),
                     Center(child: Text('技术内容')),
                     Center(child: Text('科学内容')),
