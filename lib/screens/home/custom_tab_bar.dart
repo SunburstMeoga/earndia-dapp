@@ -12,7 +12,7 @@ class CustomTabBar extends StatelessWidget {
       length: tabTitles.length,
       child: Scaffold(
         appBar: AppBar(
-          // title: Text('Tab Example'),
+          toolbarHeight: 50, // 设置AppBar的高度，减少默认的padding
           bottom: TabBar(
             labelColor: const Color(0xFF373A81), // 选中Tab文字颜色
             unselectedLabelColor: Colors.black, // 未选中Tab文字颜色
