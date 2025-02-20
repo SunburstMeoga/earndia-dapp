@@ -65,6 +65,7 @@ flutter:
     - assets/banner/profile_banner.png
     - assets/icons/crown.png
     - assets/blogs/blog.png
+    - assets/banner/main_page_banner.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:
