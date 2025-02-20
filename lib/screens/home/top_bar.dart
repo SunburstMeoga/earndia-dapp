@@ -49,11 +49,11 @@ class NewsPage extends StatelessWidget {
               child: Row(
                 children: [
                   // 日期
-                  const Expanded(
+                  Expanded(
                     flex: 1,
                     child: Text(
-                      '2023-10-25',
-                      style: TextStyle(
+                      '${DateTime.now().year}-${DateTime.now().month.toString().padLeft(2, '0')}-${DateTime.now().day.toString().padLeft(2, '0')}',
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 12,
                       ),

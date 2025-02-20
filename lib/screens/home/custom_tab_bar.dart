@@ -1,42 +1,130 @@
 import 'package:flutter/material.dart';
+import 'package:earndia_app/constants/colors.dart';
 
 class CustomTabBar extends StatelessWidget {
   final List<String> tabTitles;
-  final List<Widget> tabViews;
 
-  const CustomTabBar(
-      {super.key, required this.tabTitles, required this.tabViews});
+  const CustomTabBar({
+    super.key,
+    required this.tabTitles,
+  });
 
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: tabTitles.length, // 设置Tab数量
-      child: Scaffold(
-        appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(48), // 设置 TabBar 的高度
-          child: Container(
-            color: Colors.transparent, // 设置背景颜色为透明
+      length: tabTitles.length,
+      child: Column(
+        children: [
+          Container(
+            decoration: const BoxDecoration(
+              border: Border(
+                bottom: BorderSide(
+                  color: Colors.grey,
+                  width: 0.5,
+                ),
+              ),
+            ),
             child: TabBar(
-              labelColor: const Color(0xFF373A81), // 选中Tab文字颜色
-              unselectedLabelColor: Colors.black, // 未选中Tab文字颜色
-              indicatorColor: const Color(0xFF373A81), // 选中Tab下划线颜色
-              labelStyle: const TextStyle(
-                  fontWeight: FontWeight.bold, fontSize: 16), // 选中Tab字体加粗、变大
-              unselectedLabelStyle: const TextStyle(fontSize: 14), // 未选中Tab字体大小
-              tabs:
-                  tabTitles.map((title) => Tab(text: title)).toList(), // 渲染Tab
+              labelColor: AppColors.primary,
+              unselectedLabelColor: Colors.black,
+              indicatorColor: AppColors.primary,
+              labelStyle:
+                  const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+              unselectedLabelStyle: const TextStyle(fontSize: 14),
+              tabs: tabTitles.map((title) => Tab(text: title)).toList(),
             ),
           ),
-        ),
-        body: Padding(
-          padding: const EdgeInsets.all(8.0), // 添加合适的内边距，避免TabView内容太紧
-          child: TabBarView(
-            children: tabViews.map((tabView) {
-              return Container(
-                child: tabView,
-              );
-            }).toList(),
+          Expanded(
+            child: TabBarView(
+              children: tabTitles.map((title) {
+                return ListView.builder(
+                  itemCount: 10,
+                  padding: const EdgeInsets.all(16),
+                  itemBuilder: (context, index) {
+                    return BlogItem(
+                      title: '标题 $index',
+                      summary: '这是一段简介内容 $index',
+                      category: title,
+                      date: '2024-01-${index + 1}',
+                    );
+                  },
+                );
+              }).toList(),
+            ),
           ),
+        ],
+      ),
+    );
+  }
+}
+
+class BlogItem extends StatelessWidget {
+  final String title;
+  final String summary;
+  final String category;
+  final String date;
+
+  const BlogItem({
+    super.key,
+    required this.title,
+    required this.summary,
+    required this.category,
+    required this.date,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      margin: const EdgeInsets.only(bottom: 16),
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              title,
+              style: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              summary,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+            ),
+            const SizedBox(height: 8),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  category,
+                  style: TextStyle(
+                    color: Colors.grey[600],
+                    fontSize: 12,
+                  ),
+                ),
+                Row(
+                  children: [
+                    Icon(
+                      Icons.access_time,
+                      size: 16,
+                      color: Colors.grey[600],
+                    ),
+                    const SizedBox(width: 4),
+                    Text(
+                      date,
+                      style: TextStyle(
+                        color: Colors.grey[600],
+                        fontSize: 12,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );
