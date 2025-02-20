@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:earndia_app/screens/home/custom_tab_bar.dart';
 import 'package:earndia_app/widgets/top_bar.dart';
+import 'package:earndia_app/widgets/blog/blog_tab_view.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -29,14 +29,8 @@ class HomePage extends StatelessWidget {
                   horizontal: 8,
                   vertical: 0,
                 ),
-                child: const CustomTabBar(
+                child: const BlogTabView(
                   tabTitles: ['热门', '商业', '技术', '科学'],
-                  tabViews: [
-                    Center(child: Text('热门内容')),
-                    Center(child: Text('商业内容')),
-                    Center(child: Text('技术内容')),
-                    Center(child: Text('科学内容')),
-                  ],
                 ),
               ),
             ),
