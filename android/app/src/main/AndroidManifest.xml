@@ -1,4 +1,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<queries>
+  <!-- 允许查询MetaMask应用 -->
+  <package android:name="io.metamask" />
+  
+  <!-- 如果需要支持其他钱包（如Trust Wallet） -->
+  <package android:name="com.wallet.crypto.trustapp" />
+</queries>
     <application
         android:label="earndia_app"
         android:name="${applicationName}"
